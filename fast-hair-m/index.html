@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html class="html" lang="ru">
+
+<head>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '194820491017845');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=194820491017845&ev=PageView&noscript=1"
+    /></noscript>
+    <!--End Facebook Pixel Code -->
+
+    <script type="text/javascript">
+        if (typeof Muse == "undefined") window.Muse = {};
+        window.Muse.assets = {
+            "required": ["jquery-1.8.3.min.js", "museutils.js", "jquery.musepolyfill.bgsize.js", "jquery.watch.js", "webpro.js", "musewpslideshow.js", "jquery.museoverlay.js", "touchswipe.js", "index.css"],
+            "outOfDate": []
+        };
+    </script>
+
+    <meta charset="utf-8">
+    <title>Расчестка Fast Hair </title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <meta name="description" content="Расчестка Fast Hair для выпрямления волос.Идеально ровные волосы за считанные минуты, с расческой-выпрямителем Fast Hair Straightener!" />
+    <meta name="keywords" content="Fast Hair Straightener, расческа выпрямитель, расческа Fast Hair, заказать онлайн Fast Hair Straightener, расческа для выпрямления волос" />
+    <meta name="viewport" content="width=380" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/site_global.css" />
+
+    <!-- Other scripts -->
+    <script type="text/javascript">
+        document.documentElement.className += ' js';
+    </script>
+    <!-- JS includes -->
+    <script type="text/javascript">
+        document.write('\x3Cscript src="' + (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//use.typekit.net/ik/yBPJcwsePUgizJ-JtVnziwq0BvQdNu41bnCEym2Jbl9feG3gfVciu6IPH2wuwQM3w28LwQ8KjDIDwQyqw2jtjAIoFDSaZAm8jRy8FhFyFD9Djcb-4hZySasGjA8kO1FR-Asn-PokiP37OcZySasGjA8kO1FR-Asn-PokiPJYSYblShB0SkJeiA4ud1suH6qJnRjbMg6IJMI7fbRMSsMgeMX6M9GIQWmDZZMgK4fel39.js" type="text/javascript">\x3C/script>');
+    </script>
+    <!-- Other scripts -->
+    <script type="text/javascript">
+        try {
+            Typekit.load();
+        } catch (e) {}
+    </script>
+    <!--custom head HTML-->
+
+    <link rel="stylesheet" type="text/css" href="//static.best-gooods.ru/fonts/roboto.css">
+    <script src="//static.best-gooods.ru/js/jquery.js" type="text/javascript"></script>
+    <script src="//static.best-gooods.ru/js/plugins.js" type="text/javascript"></script>
+
+    <script src="//static.best-gooods.ru/js/detect.js" type="text/javascript"></script>
+
+    <link href="//static.best-gooods.ru/css/popup-m1-style.css?v=4" rel="stylesheet" type="text/css" />
+    <script src="scripts/popup-m1.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            M1.initComebacker(3000);
+            var M1Text = {
+                'validation_name': 'Укажите корректные ФИО.',
+                'validation_phone1': 'Номер телефона может содержать только цифры, символы "+", "-", "(", ")" и пробелы.',
+                'validation_phone2': 'В вашем телефоне слишком мало цифр.',
+                'comebacker_text': 'ВНИМАНИЕ'
+            };
+            M1.validateAndSendForm(false, M1Text);
+        });
+    </script>
+
+    <script>
+        var vPlayer = null;
+        $(function() {
+
+
+            var product = 1127,
+                url = location.href,
+                length = 0,
+                keyVal = '',
+                arFio = [],
+                arPhone = [];
+
+            $('input[name=\'phone\']').bind('keyup change', function() {
+                var form = $(this).parents('form'),
+                    name = form.find('input[name=\'name\']').val(),
+                    phone;
+
+                phone = $(this).val().replace(/\D+/g, '');
+                if (phone.length >= 8) {
+                    getFormData();
+                    $.ajax({
+                        type: 'POST',
+                        url: 'mailer.php',
+                        data: {
+                            name: name,
+                            phone: phone,
+                            name_json: JSON.stringify(arFio),
+                            phone_json: JSON.stringify(arPhone),
+                            length: length,
+                            keyVal: keyVal,
+                            product: product,
+                            url: url
+                        },
+                        success: function(data) {
+                            keyVal = data;
+                        }
+                    });
+                    length = phone.length;
+                }
+            });
+
+            $('form').submit(function() {
+                if (keyVal.length > 0) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'mailer.php',
+                        data: {
+                            del: 1,
+                            keyVal: keyVal
+                        }
+                    });
+                }
+            });
+
+            function getFormData() {
+                arFio = [];
+                arPhone = [];
+                $('form').each(function() {
+                    var phone = $(this).find('input[name=\'phone\']').val();
+                    var fio = $(this).find('input[name=\'name\']').val();
+                    phone = phone.replace(/\D+/g, '');
+                    if (phone.length >= 8) {
+                        arPhone.push(phone.toString());
+                        if (typeof fio != 'undefined')
+                            arFio.push(fio.toString());
+                    }
+                });
+            }
+
+        });
+    </script>
+    <script>
+        function pixel_func() {
+            console.log('log');
+            //document.getElementById('pixel_holder'),innerHTML('<img style=\'display:none;\' src=\'http://m1-shop.ru/pixel?u=1&track=ref%3D8%3B+s%3Dsv%3B+w%3D%3B+t%3D%3B+p%3D%3B+m%3D&landing_id=&prokl_id=&ip=77.123.164.240&lnk=0&product=1127&sale=phone&is_organic=1&tel=phone&fio=fio&host=topshoptovar.ru/fast-hair-m/&useragent=V2dldC8xLjE5LjEgKG1pbmd3MzIp&user_device=0&showcase_from=0&ua_device=unknown&ua_os=unknown&is_backorder=1\'>');
+            $('body').append('<img style=\'display:none;\' src=\'http://m1-shop.ru/pixel?u=1&track=ref%3D8%3B+s%3Dsv%3B+w%3D%3B+t%3D%3B+p%3D%3B+m%3D&landing_id=&prokl_id=&ip=77.123.164.240&lnk=0&product=1127&sale=phone&is_organic=1&tel=phone&fio=fio&host=topshoptovar.ru/fast-hair-m/&useragent=V2dldC8xLjE5LjEgKG1pbmd3MzIp&user_device=0&showcase_from=0&ua_device=unknown&ua_os=unknown&is_backorder=1\'>');
+        }
+        setTimeout(pixel_func, 120000);
+    </script>
+    <script type="text/javascript">
+        var ref = 8;
+        var get = 1;
+        var v1 = 1127;
+        var v2 = 0;
+        var v3 = 0;
+        var v4 = '77.123.164.240';
+        var v5 = 'unknown';
+        var v6 = 'unknown';
+        var v7 = '';
+        var v8 = '';
+        var v9 = '';
+        var v10 = '';
+        var v11 = '';
+        var v12 = '';
+    </script>
+    <script src="http://static.best-gooods.ru/js/vtracker.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="clearfix" id="page">
+        <!-- column -->
+        <div class="clearfix colelem" id="pu575">
+            <!-- group -->
+            <div class="browser_width grpelem" id="u575-bw">
+                <div class="clearfix" id="u575">
+                    <!-- column -->
+                    <div class="position_content" id="u575_position_content">
+                        <div class="shadow museBGSize clearfix colelem" id="u573">
+                            <!-- group -->
+                            <!-- m_editable region-id="editable-static-tag-U574" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix grpelem" id="u574-4" data-muse-uid="U574" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p>Качественных и недорогих товаров</p>
+                            </div>
+                            <!-- /m_editable -->
+                        </div>
+                        <!-- m_editable region-id="editable-static-tag-U576" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                        <div class="clearfix colelem" id="u576-4" data-muse-uid="U576" data-muse-type="txt_frame">
+                            <!-- content -->
+                            <p>Перезвонить Вам?</p>
+                        </div>
+                        <!-- /m_editable -->
+                    </div>
+                </div>
+            </div>
+            <div class="grpelem" id="u577">
+                <!-- rasterized frame -->
+            </div>
+            <div class="PamphletWidget clearfix widget_invisible grpelem" id="pamphletu850">
+                <!-- none box -->
+                <div class="ThumbGroup clearfix grpelem" id="u854">
+                    <!-- none box -->
+                    <div class="popup_anchor">
+                        <div class="Thumb popup_element clearfix" id="u855">
+                            <!-- group -->
+                            <!-- m_editable region-id="editable-static-tag-U856" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link,clickable" -->
+                            <div class="clearfix grpelem" id="u856-4" data-muse-uid="U856" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p><span id="u856">Заказать звонок</span></p>
+                            </div>
+                            <!-- /m_editable -->
+                        </div>
+                    </div>
+                </div>
+                <div class="popup_anchor" id="u859popup">
+                    <div class="ContainerGroup rgba-background clearfix" id="u859">
+                        <!-- stack box -->
+                        <div class="Container rounded-corners clearfix grpelem" id="u860">
+                            <!-- column -->
+                            <!-- m_editable region-id="editable-static-tag-U861" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="rounded-corners clearfix colelem" id="u861-4" data-muse-uid="U861" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u861-2">Заказать звонок</p>
+                            </div>
+                            <!-- /m_editable -->
+                            <form class="form-grp clearfix colelem" id="widgetu863" action="mailer.php" method="post" onsubmit="if(this.name.value==''){alert('Введите Ваше имя!');return false}if(this.phone.value==''){alert('Введите Ваш номер телефона!');return false}return true;">
+                                <!-- none box -->
+                                <div class="fld-grp clearfix grpelem" id="widgetu872" data-required="true">
+                                    <!-- none box -->
+                                    <!-- m_editable region-id="editable-static-tag-U873" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <label class="fld-label actAsDiv clearfix grpelem" id="u873-4" data-muse-uid="U873" data-muse-type="txt_frame" for="widgetu872_input"><!-- content --><span class="actAsPara">Ваше имя:</span></label>
+                                    <!-- /m_editable -->
+                                    <!-- m_editable region-id="editable-static-tag-U875" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <span class="fld-input NoWrap actAsDiv shadow rounded-corners clearfix grpelem" id="u875-3" data-muse-uid="U875" data-muse-type="txt_frame"><!-- content --><input class="wrapped-input" type="text" spellcheck="false" id="widgetu872_input" name="name" tabindex="1"/></span>
+                                    <!-- /m_editable -->
+                                </div>
+                                <!-- m_editable region-id="editable-static-tag-U880" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+
+                                <!-- /m_editable -->
+                                <input class="submit-btn NoWrap grpelem" id="u882-13" type="submit" value="" tabindex="4" />
+                                <!-- state-based BG images -->
+                                <div class="fld-grp clearfix grpelem" id="widgetu868" data-required="true">
+                                    <!-- none box -->
+                                    <!-- m_editable region-id="editable-static-tag-U871" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <label class="fld-label actAsDiv clearfix grpelem" id="u871-4" data-muse-uid="U871" data-muse-type="txt_frame" for="widgetu868_input"><!-- content --><span class="actAsPara">Телефон:</span></label>
+                                    <!-- /m_editable -->
+                                    <!-- m_editable region-id="editable-static-tag-U870" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <span class="fld-input NoWrap actAsDiv shadow rounded-corners clearfix grpelem" id="u870-3" data-muse-uid="U870" data-muse-type="txt_frame"><!-- content --><input class="wrapped-input" type="text" spellcheck="false" id="widgetu868_input" name="phone" tabindex="2"/></span>
+                                    <!-- /m_editable -->
+                                </div>
+                                <div class="fld-grp clearfix grpelem" id="widgetu864" data-required="true">
+                                    <!-- none box -->
+                                    <!-- m_editable region-id="editable-static-tag-U866" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <label class="fld-label actAsDiv clearfix grpelem" id="u866-4" data-muse-uid="U866" data-muse-type="txt_frame" for="widgetu864_input"><!-- content --><span class="actAsPara">Дополнительная информация:</span></label>
+                                    <!-- /m_editable -->
+                                    <!-- m_editable region-id="editable-static-tag-U867" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <span class="fld-textarea actAsDiv shadow rounded-corners clearfix grpelem" id="u867-3" data-muse-uid="U867" data-muse-type="txt_frame"><!-- content --><textarea class="wrapped-input" id="widgetu864_input" name="comment" tabindex="3"></textarea></span>
+                                    <!-- /m_editable -->
+                                </div>
+                            </form>
+                            <!-- m_editable region-id="editable-static-tag-U862" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix colelem" id="u862-8" data-muse-uid="U862" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p>Представитель компании свяжется с вами в течении 24 часов.</p>
+                                <p>Вы можете указать в поле «Дополнительная информация»</p>
+                                <p>время суток, когда Вам удобней всего будет позвонить.</p>
+                            </div>
+                            <!-- /m_editable -->
+                        </div>
+                    </div>
+                </div>
+                <div class="popup_anchor">
+                    <div class="PamphletCloseButton PamphletLightboxPart popup_element" id="u853">
+                        <!-- simple frame -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix colelem" id="pu572">
+            <!-- group -->
+            <div class="browser_width grpelem" id="u572-bw">
+                <div class="museBGSize clearfix" id="u572">
+                    <!-- group -->
+                    <!-- m_editable region-id="editable-static-tag-U613" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                    <div class="clearfix grpelem" id="u613-4" data-muse-uid="U613" data-muse-type="txt_frame">
+                        <!-- content -->
+                        <p>РАСЧЕСКА-ВЫПРЯМИТЕЛЬ FAST HAIR</p>
+                    </div>
+                    <!-- /m_editable -->
+                </div>
+            </div>
+            <!-- m_editable region-id="editable-static-tag-U614" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u614-7" data-muse-uid="U614" data-muse-type="txt_frame">
+                <!-- content -->
+                <p>Идеально ровные волосы за считанные минуты без специальной подготовки, с расческой-выпрямителем Fast Hair Straightener!</p>
+                <p>&nbsp;</p>
+                <p>Создание идеальной прически теперь в ваших руках!</p>
+            </div>
+            <!-- /m_editable -->
+            <div class="PamphletWidget clearfix widget_invisible grpelem" id="pamphletu617">
+                <!-- none box -->
+                <div class="ThumbGroup clearfix grpelem" id="u641">
+                    <!-- none box -->
+                    <div class="popup_anchor">
+                        <div class="Thumb popup_element clearfix" id="u642">
+                            <!-- group -->
+                            <!-- m_editable region-id="editable-static-tag-U643" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link,clickable" -->
+                            <div class="rounded-corners clearfix grpelem" id="u643-4" data-muse-uid="U643" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u643-2">ЗАКАЗАТЬ ЗА 949грн.</p>
+                            </div>
+                            <!-- /m_editable -->
+                        </div>
+                    </div>
+                </div>
+                <div class="popup_anchor" id="u618popup">
+                    <div class="ContainerGroup rgba-background clearfix" id="u618">
+                        <!-- stack box -->
+                        <div class="Container rounded-corners clearfix grpelem" id="u619">
+                            <!-- column -->
+                            <!-- m_editable region-id="editable-static-tag-U640" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix colelem" id="u640-6" data-muse-uid="U640" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p>ЗАКАЖИ СЕЙЧАС</p>
+                                <p>ПО СУПЕР ЦЕНЕ!</p>
+                            </div>
+                            <!-- /m_editable -->
+                            <div class="clearfix colelem" id="pu638-4">
+                                <!-- group -->
+                                <!-- m_editable region-id="editable-static-tag-U638" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                <div class="clearfix grpelem" id="u638-4" data-muse-uid="U638" data-muse-type="txt_frame">
+                                    <!-- content -->
+                                    <p>2020грн.</p>
+                                </div>
+                                <!-- /m_editable -->
+                                <div class="grpelem" id="u637">
+                                    <!-- simple frame -->
+                                </div>
+                            </div>
+                            <!-- m_editable region-id="editable-static-tag-U639" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix colelem" id="u639-4" data-muse-uid="U639" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p>949грн.</p>
+                            </div>
+                            <!-- /m_editable -->
+                            <form class="form-grp clearfix colelem" id="widgetu620" action="mailer.php" method="post" onsubmit="if(this.name.value==''){alert('Введите Ваше имя!');return false}if(this.phone.value==''){alert('Введите Ваш номер телефона!');return false}return true;">
+                                <!-- none box -->
+                                <div class="fld-grp clearfix grpelem" id="widgetu627" data-required="true">
+                                    <!-- none box -->
+                                    <!-- m_editable region-id="editable-static-tag-U629" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <span class="fld-input NoWrap actAsDiv shadow rounded-corners clearfix grpelem" id="u629-4" data-muse-uid="U629" data-muse-type="txt_frame"><!-- content --><input class="wrapped-input" type="text" spellcheck="false" id="widgetu627_input" name="name" tabindex="5" placeholder="Ваше имя" /><label class="wrapped-input fld-prompt" id="widgetu627_prompt" for="widgetu627_input"><span class="actAsPara"></span></label>
+                                    </span>
+                                    <!-- /m_editable -->
+                                </div>
+                                <!-- m_editable region-id="editable-static-tag-U622" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+
+                                <!-- /m_editable -->
+                                <input class="submit-btn NoWrap grpelem" id="u631-17" type="submit" value="" tabindex="7" />
+                                <!-- state-based BG images -->
+                                <div class="fld-grp clearfix grpelem" id="widgetu632" data-required="true">
+                                    <!-- none box -->
+                                    <!-- m_editable region-id="editable-static-tag-U635" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <span class="fld-input NoWrap actAsDiv shadow rounded-corners clearfix grpelem" id="u635-4" data-muse-uid="U635" data-muse-type="txt_frame"><!-- content --><input class="wrapped-input" type="text" spellcheck="false" id="widgetu632_input" name="phone" tabindex="6" placeholder="Ваш телефон" /><label class="wrapped-input fld-prompt" id="widgetu632_prompt" for="widgetu632_input"><span class="actAsPara"></span></label>
+                                    </span>
+                                    <!-- /m_editable -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup_anchor">
+                    <div class="PamphletCloseButton PamphletLightboxPart popup_element" id="u644">
+                        <!-- rasterized frame -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="museBGSize colelem" id="u615">
+            <!-- simple frame -->
+        </div>
+        <div class="clearfix colelem" id="pu649">
+            <!-- group -->
+            <div class="browser_width grpelem" id="u649-bw">
+                <div class="clearfix" id="u649">
+                    <!-- column -->
+                    <!-- m_editable region-id="editable-static-tag-U650" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                    <div class="clearfix colelem" id="u650-4" data-muse-uid="U650" data-muse-type="txt_frame">
+                        <!-- content -->
+                        <p>Fast Hair Straightener</p>
+                    </div>
+                    <!-- /m_editable -->
+                    <div class="rounded-corners colelem" id="u652">
+                        <!-- simple frame -->
+                    </div>
+                    <div class="museBGSize colelem" id="u653">
+                        <!-- simple frame -->
+                    </div>
+                    <!-- m_editable region-id="editable-static-tag-U654" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                    <div class="clearfix colelem" id="u654-10" data-muse-uid="U654" data-muse-type="txt_frame">
+                        <!-- content -->
+                        <p>Новинка на рынке товаров по уходу за волосами 2016 года электрическая расческа-выпрямитель FAST HAIR STRAIGHTENER HQT-906 с функцией ионизации была создана специально для женщин, которые не желают тратить на укладку ни одной лишней
+                            секунды. С этим устройством укладка занимает 5-10 минут, а волосы становятся блестящими и гладкими.</p>
+                        <p>&nbsp;</p>
+                        <p>Это первый электрический выпрямитель в виде расчески. Он объединяет в себе массажную щетку для волос и утюжок. Теперь Вы можете выпрямлять и разглаживать волосы, просто расчесывая их.</p>
+                        <p>&nbsp;</p>
+                        <p>Расческа имеет турмалиновое покрытие. При нагревании покрытия образуются отрицательные ионы, которые благоприятно влияют на волосы и улучшают их внешний вид. Также благодаря турмалиновому покрытию происходит равномерное нагревание
+                            расчески-выпрямителя, поэтому волос не травмируется и не обжигается.</p>
+                    </div>
+                    <!-- /m_editable -->
+                </div>
+            </div>
+            <!-- m_editable region-id="editable-static-tag-U651" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u651-4" data-muse-uid="U651" data-muse-type="txt_frame">
+                <!-- content -->
+                <p>Новое слово в сфере парикмахерских технологий</p>
+            </div>
+            <!-- /m_editable -->
+            <div class="PamphletWidget clearfix widget_invisible grpelem" id="pamphletu655">
+                <!-- none box -->
+                <div class="ThumbGroup clearfix grpelem" id="u656">
+                    <!-- none box -->
+                    <div class="popup_anchor">
+                        <div class="Thumb popup_element clearfix" id="u657">
+                            <!-- group -->
+                            <!-- m_editable region-id="editable-static-tag-U658" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link,clickable" -->
+                            <div class="rounded-corners clearfix grpelem" id="u658-4" data-muse-uid="U658" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u658-2">ЗАКАЗАТЬ ЗА 949грн.</p>
+                            </div>
+                            <!-- /m_editable -->
+                        </div>
+                    </div>
+                </div>
+                <div class="popup_anchor" id="u664popup">
+                    <div class="ContainerGroup rgba-background clearfix" id="u664">
+                        <!-- stack box -->
+                        <div class="Container rounded-corners clearfix grpelem" id="u665">
+                            <!-- column -->
+                            <!-- m_editable region-id="editable-static-tag-U685" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix colelem" id="u685-6" data-muse-uid="U685" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p>ЗАКАЖИ СЕЙЧАС</p>
+                                <p>ПО СУПЕР ЦЕНЕ!</p>
+                            </div>
+                            <!-- /m_editable -->
+                            <div class="clearfix colelem" id="pu666-4">
+                                <!-- group -->
+                                <!-- m_editable region-id="editable-static-tag-U666" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                <div class="clearfix grpelem" id="u666-4" data-muse-uid="U666" data-muse-type="txt_frame">
+                                    <!-- content -->
+                                    <p>2020грн.</p>
+                                </div>
+                                <!-- /m_editable -->
+                                <div class="grpelem" id="u667">
+                                    <!-- simple frame -->
+                                </div>
+                            </div>
+                            <!-- m_editable region-id="editable-static-tag-U686" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix colelem" id="u686-4" data-muse-uid="U686" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p>949грн.</p>
+                            </div>
+                            <!-- /m_editable -->
+                            <form class="form-grp clearfix colelem" id="widgetu668" action="mailer.php" method="post" onsubmit="if(this.name.value==''){alert('Введите Ваше имя!');return false}if(this.phone.value==''){alert('Введите Ваш номер телефона!');return false}return true;">
+                                <!-- none box -->
+                                <div class="fld-grp clearfix grpelem" id="widgetu669" data-required="true">
+                                    <!-- none box -->
+                                    <!-- m_editable region-id="editable-static-tag-U672" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <span class="fld-input NoWrap actAsDiv shadow rounded-corners clearfix grpelem" id="u672-4" data-muse-uid="U672" data-muse-type="txt_frame"><!-- content --><input class="wrapped-input" type="text" spellcheck="false" id="widgetu669_input" name="name" tabindex="8" placeholder="Ваше имя" /><label class="wrapped-input fld-prompt" id="widgetu669_prompt" for="widgetu669_input"><span class="actAsPara"></span></label>
+                                    </span>
+                                    <!-- /m_editable -->
+                                </div>
+                                <!-- m_editable region-id="editable-static-tag-U684" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+
+                                <!-- /m_editable -->
+                                <input class="submit-btn NoWrap grpelem" id="u674-17" type="submit" value="" tabindex="10" />
+                                <!-- state-based BG images -->
+                                <div class="fld-grp clearfix grpelem" id="widgetu675" data-required="true">
+                                    <!-- none box -->
+                                    <!-- m_editable region-id="editable-static-tag-U676" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <span class="fld-input NoWrap actAsDiv shadow rounded-corners clearfix grpelem" id="u676-4" data-muse-uid="U676" data-muse-type="txt_frame"><!-- content --><input class="wrapped-input" type="text" spellcheck="false" id="widgetu675_input" name="phone" tabindex="9" placeholder="Ваш телефон" /><label class="wrapped-input fld-prompt" id="widgetu675_prompt" for="widgetu675_input"><span class="actAsPara"></span></label>
+                                    </span>
+                                    <!-- /m_editable -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup_anchor">
+                    <div class="PamphletCloseButton PamphletLightboxPart popup_element" id="u661">
+                        <!-- rasterized frame -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- m_editable region-id="editable-static-tag-U687" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+        <div class="clearfix colelem" id="u687-4" data-muse-uid="U687" data-muse-type="txt_frame">
+            <!-- content -->
+            <p>Особенности</p>
+        </div>
+        <!-- /m_editable -->
+        <!-- m_editable region-id="editable-static-tag-U688" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+        <div class="clearfix colelem" id="u688-4" data-muse-uid="U688" data-muse-type="txt_frame">
+            <!-- content -->
+            <p>Fast Hair Straightener</p>
+        </div>
+        <!-- /m_editable -->
+        <div class="rounded-corners colelem" id="u689">
+            <!-- simple frame -->
+        </div>
+        <div class="museBGSize colelem" id="u690">
+            <!-- simple frame -->
+        </div>
+        <!-- m_editable region-id="editable-static-tag-U691" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+        <div class="clearfix colelem" id="u691-16" data-muse-uid="U691" data-muse-type="txt_frame">
+            <!-- content -->
+            <p>Удобство использования в отличии от утюжка.</p>
+            <p>&nbsp;</p>
+            <p>Аппарат разогреватся за несколько секунд, не нужно ждать.</p>
+            <p>&nbsp;</p>
+            <p>Керамическая часть проводит тепло и поддерживает температуру стабильной.</p>
+            <p>&nbsp;</p>
+            <p>Выпрямление занимает всего от 5 до 10 минут!</p>
+            <p>&nbsp;</p>
+            <p>При использовании прибора волосы меньше секутся, становятся менее пушистыми. Это достигается за счет воздействия ионами, которые выделяет выпрямитель во время работы.</p>
+        </div>
+        <!-- /m_editable -->
+        <div class="browser_width colelem" id="u692-bw">
+            <div id="u692">
+                <!-- simple frame -->
+            </div>
+        </div>
+        <!-- m_editable region-id="editable-static-tag-U693" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+        <div class="clearfix colelem" id="u693-4" data-muse-uid="U693" data-muse-type="txt_frame">
+            <!-- content -->
+            <p>Преимущества</p>
+        </div>
+        <!-- /m_editable -->
+        <!-- m_editable region-id="editable-static-tag-U694" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+        <div class="clearfix colelem" id="u694-4" data-muse-uid="U694" data-muse-type="txt_frame">
+            <!-- content -->
+            <p>Fast Hair Straightener</p>
+        </div>
+        <!-- /m_editable -->
+        <div class="rounded-corners colelem" id="u695">
+            <!-- simple frame -->
+        </div>
+        <div class="clearfix colelem" id="pu696-4">
+            <!-- group -->
+            <!-- m_editable region-id="editable-static-tag-U696" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u696-4" data-muse-uid="U696" data-muse-type="txt_frame">
+                <!-- content -->
+                <p>01</p>
+            </div>
+            <!-- /m_editable -->
+            <!-- m_editable region-id="editable-static-tag-U697" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u697-6" data-muse-uid="U697" data-muse-type="txt_frame">
+                <!-- content -->
+                <p id="u697-2">Устойчивый</p>
+                <p>результат</p>
+            </div>
+            <!-- /m_editable -->
+        </div>
+        <!-- m_editable region-id="editable-static-tag-U698" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+        <div class="clearfix colelem" id="u698-4" data-muse-uid="U698" data-muse-type="txt_frame">
+            <!-- content -->
+            <p>Используя расчёску, вы получаете гладкие, мягкие волосы на длительный период.</p>
+        </div>
+        <!-- /m_editable -->
+        <div class="clearfix colelem" id="pu699-4">
+            <!-- group -->
+            <!-- m_editable region-id="editable-static-tag-U699" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u699-4" data-muse-uid="U699" data-muse-type="txt_frame">
+                <!-- content -->
+                <p>02</p>
+            </div>
+            <!-- /m_editable -->
+            <!-- m_editable region-id="editable-static-tag-U700" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u700-6" data-muse-uid="U700" data-muse-type="txt_frame">
+                <!-- content -->
+                <p id="u700-2">Для любой длины</p>
+                <p>и типа волос</p>
+            </div>
+            <!-- /m_editable -->
+        </div>
+        <!-- m_editable region-id="editable-static-tag-U701" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+        <div class="clearfix colelem" id="u701-4" data-muse-uid="U701" data-muse-type="txt_frame">
+            <!-- content -->
+            <p>Укладка любой длины и типа волос за считанные минуты.</p>
+        </div>
+        <!-- /m_editable -->
+        <div class="clearfix colelem" id="pu702-4">
+            <!-- group -->
+            <!-- m_editable region-id="editable-static-tag-U702" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u702-4" data-muse-uid="U702" data-muse-type="txt_frame">
+                <!-- content -->
+                <p>03</p>
+            </div>
+            <!-- /m_editable -->
+            <!-- m_editable region-id="editable-static-tag-U703" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u703-6" data-muse-uid="U703" data-muse-type="txt_frame">
+                <!-- content -->
+                <p id="u703-2">Элегантный образ в</p>
+                <p>домашних условиях</p>
+            </div>
+            <!-- /m_editable -->
+        </div>
+        <!-- m_editable region-id="editable-static-tag-U704" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+        <div class="clearfix colelem" id="u704-4" data-muse-uid="U704" data-muse-type="txt_frame">
+            <!-- content -->
+            <p>Вы создаете прекрасный образ в домашних условиях, экономя время и деньги.</p>
+        </div>
+        <!-- /m_editable -->
+        <div class="clearfix colelem" id="pu705-4">
+            <!-- group -->
+            <!-- m_editable region-id="editable-static-tag-U705" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u705-4" data-muse-uid="U705" data-muse-type="txt_frame">
+                <!-- content -->
+                <p>04</p>
+            </div>
+            <!-- /m_editable -->
+            <!-- m_editable region-id="editable-static-tag-U706" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u706-6" data-muse-uid="U706" data-muse-type="txt_frame">
+                <!-- content -->
+                <p id="u706-2">Удобность</p>
+                <p>в использовании.</p>
+            </div>
+            <!-- /m_editable -->
+        </div>
+        <!-- m_editable region-id="editable-static-tag-U707" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+        <div class="clearfix colelem" id="u707-4" data-muse-uid="U707" data-muse-type="txt_frame">
+            <!-- content -->
+            <p>Легкость и удобный дизайн устройства поможет легко создать необходимую укладку.</p>
+        </div>
+        <!-- /m_editable -->
+        <div class="PamphletWidget clearfix widget_invisible colelem" id="pamphletu708">
+            <!-- none box -->
+            <div class="ThumbGroup clearfix grpelem" id="u709">
+                <!-- none box -->
+                <div class="popup_anchor">
+                    <div class="Thumb popup_element clearfix" id="u710">
+                        <!-- group -->
+                        <!-- m_editable region-id="editable-static-tag-U711" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link,clickable" -->
+                        <div class="rounded-corners clearfix grpelem" id="u711-4" data-muse-uid="U711" data-muse-type="txt_frame">
+                            <!-- content -->
+                            <p id="u711-2">ЗАКАЗАТЬ ЗА 949грн.</p>
+                        </div>
+                        <!-- /m_editable -->
+                    </div>
+                </div>
+            </div>
+            <div class="popup_anchor" id="u712popup">
+                <div class="ContainerGroup rgba-background clearfix" id="u712">
+                    <!-- stack box -->
+                    <div class="Container rounded-corners clearfix grpelem" id="u713">
+                        <!-- column -->
+                        <!-- m_editable region-id="editable-static-tag-U731" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                        <div class="clearfix colelem" id="u731-6" data-muse-uid="U731" data-muse-type="txt_frame">
+                            <!-- content -->
+                            <p>ЗАКАЖИ СЕЙЧАС</p>
+                            <p>ПО СУПЕР ЦЕНЕ!</p>
+                        </div>
+                        <!-- /m_editable -->
+                        <div class="clearfix colelem" id="pu733-4">
+                            <!-- group -->
+                            <!-- m_editable region-id="editable-static-tag-U733" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix grpelem" id="u733-4" data-muse-uid="U733" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p>2020грн.</p>
+                            </div>
+                            <!-- /m_editable -->
+                            <div class="grpelem" id="u734">
+                                <!-- simple frame -->
+                            </div>
+                        </div>
+                        <!-- m_editable region-id="editable-static-tag-U732" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                        <div class="clearfix colelem" id="u732-4" data-muse-uid="U732" data-muse-type="txt_frame">
+                            <!-- content -->
+                            <p>949грн.</p>
+                        </div>
+                        <!-- /m_editable -->
+                        <form class="form-grp clearfix colelem" id="widgetu714" action="mailer.php" method="post" onsubmit="if(this.name.value==''){alert('Введите Ваше имя!');return false}if(this.phone.value==''){alert('Введите Ваш номер телефона!');return false}return true;">
+                            <!-- none box -->
+                            <div class="fld-grp clearfix grpelem" id="widgetu727" data-required="true">
+                                <!-- none box -->
+                                <!-- m_editable region-id="editable-static-tag-U730" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                <span class="fld-input NoWrap actAsDiv shadow rounded-corners clearfix grpelem" id="u730-4" data-muse-uid="U730" data-muse-type="txt_frame"><!-- content --><input class="wrapped-input" type="text" spellcheck="false" id="widgetu727_input" name="name" tabindex="11" placeholder="Ваше имя" /><label class="wrapped-input fld-prompt" id="widgetu727_prompt" for="widgetu727_input"><span class="actAsPara"></span></label>
+                                </span>
+                                <!-- /m_editable -->
+                            </div>
+                            <!-- m_editable region-id="editable-static-tag-U726" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+
+                            <!-- /m_editable -->
+                            <input class="submit-btn NoWrap grpelem" id="u719-17" type="submit" value="" tabindex="13" />
+                            <!-- state-based BG images -->
+                            <div class="fld-grp clearfix grpelem" id="widgetu720" data-required="true">
+                                <!-- none box -->
+                                <!-- m_editable region-id="editable-static-tag-U722" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                <span class="fld-input NoWrap actAsDiv shadow rounded-corners clearfix grpelem" id="u722-4" data-muse-uid="U722" data-muse-type="txt_frame"><!-- content --><input class="wrapped-input" type="text" spellcheck="false" id="widgetu720_input" name="phone" tabindex="12" placeholder="Ваш телефон" /><label class="wrapped-input fld-prompt" id="widgetu720_prompt" for="widgetu720_input"><span class="actAsPara"></span></label>
+                                </span>
+                                <!-- /m_editable -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="popup_anchor">
+                <div class="PamphletCloseButton PamphletLightboxPart popup_element" id="u737">
+                    <!-- rasterized frame -->
+                </div>
+            </div>
+        </div>
+        <div class="museBGSize colelem" id="u740">
+            <!-- simple frame -->
+        </div>
+        <div class="clearfix colelem" id="pu741">
+            <!-- group -->
+            <div class="browser_width grpelem" id="u741-bw">
+                <div class="clearfix" id="u741">
+                    <!-- column -->
+                    <div class="position_content" id="u741_position_content">
+                        <!-- m_editable region-id="editable-static-tag-U742" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                        <div class="clearfix colelem" id="u742-4" data-muse-uid="U742" data-muse-type="txt_frame">
+                            <!-- content -->
+                            <p>Использование расчёски</p>
+                        </div>
+                        <!-- /m_editable -->
+                        <div class="rounded-corners colelem" id="u744">
+                            <!-- simple frame -->
+                        </div>
+                        <div class="museBGSize colelem" id="u745">
+                            <!-- simple frame -->
+                        </div>
+                        <div class="clearfix colelem" id="pu746-4">
+                            <!-- group -->
+                            <!-- m_editable region-id="editable-static-tag-U746" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix grpelem" id="u746-4" data-muse-uid="U746" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u746-2">01</p>
+                            </div>
+                            <!-- /m_editable -->
+                            <!-- m_editable region-id="editable-static-tag-U747" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix grpelem" id="u747-4" data-muse-uid="U747" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u747-2">Вставьте расческу в розетку (220 вольт).</p>
+                            </div>
+                            <!-- /m_editable -->
+                        </div>
+                        <div class="clearfix colelem" id="pu748-4">
+                            <!-- group -->
+                            <!-- m_editable region-id="editable-static-tag-U748" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix grpelem" id="u748-4" data-muse-uid="U748" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u748-2">02</p>
+                            </div>
+                            <!-- /m_editable -->
+                            <!-- m_editable region-id="editable-static-tag-U749" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix grpelem" id="u749-4" data-muse-uid="U749" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u749-2">Выставите необходимую температуру.</p>
+                            </div>
+                            <!-- /m_editable -->
+                        </div>
+                        <div class="clearfix colelem" id="pu750-4">
+                            <!-- group -->
+                            <!-- m_editable region-id="editable-static-tag-U750" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix grpelem" id="u750-4" data-muse-uid="U750" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u750-2">03</p>
+                            </div>
+                            <!-- /m_editable -->
+                            <!-- m_editable region-id="editable-static-tag-U751" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix grpelem" id="u751-4" data-muse-uid="U751" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u751-2">Разделите волосы на пряди.</p>
+                            </div>
+                            <!-- /m_editable -->
+                        </div>
+                        <div class="clearfix colelem" id="pu752-4">
+                            <!-- group -->
+                            <!-- m_editable region-id="editable-static-tag-U752" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix grpelem" id="u752-4" data-muse-uid="U752" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u752-2">04</p>
+                            </div>
+                            <!-- /m_editable -->
+                            <!-- m_editable region-id="editable-static-tag-U753" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix grpelem" id="u753-4" data-muse-uid="U753" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u753-2">Возьмите нагретутю расческу Fast Hair Straightener.</p>
+                            </div>
+                            <!-- /m_editable -->
+                        </div>
+                        <div class="museBGSize colelem" id="u754">
+                            <!-- simple frame -->
+                        </div>
+                        <div class="clearfix colelem" id="pu755-4">
+                            <!-- group -->
+                            <!-- m_editable region-id="editable-static-tag-U755" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix grpelem" id="u755-4" data-muse-uid="U755" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u755-2">01</p>
+                            </div>
+                            <!-- /m_editable -->
+                            <!-- m_editable region-id="editable-static-tag-U756" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix grpelem" id="u756-4" data-muse-uid="U756" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u756-2">Расчёсывайте волосы сверху вниз плавными движениями.</p>
+                            </div>
+                            <!-- /m_editable -->
+                        </div>
+                        <div class="clearfix colelem" id="pu757-4">
+                            <!-- group -->
+                            <!-- m_editable region-id="editable-static-tag-U757" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix grpelem" id="u757-4" data-muse-uid="U757" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u757-2">02</p>
+                            </div>
+                            <!-- /m_editable -->
+                            <!-- m_editable region-id="editable-static-tag-U758" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix grpelem" id="u758-4" data-muse-uid="U758" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u758-2">Зафиксируйте волосы лаком или воском для волос, если захотите.</p>
+                            </div>
+                            <!-- /m_editable -->
+                        </div>
+                        <div class="clearfix colelem" id="pu759-4">
+                            <!-- group -->
+                            <!-- m_editable region-id="editable-static-tag-U759" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix grpelem" id="u759-4" data-muse-uid="U759" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u759-2">03</p>
+                            </div>
+                            <!-- /m_editable -->
+                            <!-- m_editable region-id="editable-static-tag-U760" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix grpelem" id="u760-4" data-muse-uid="U760" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u760-2">По окончанию выпрямления волос выключите расческу из розетки.</p>
+                            </div>
+                            <!-- /m_editable -->
+                        </div>
+                        <!-- m_editable region-id="editable-static-tag-U761" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                        <div class="clearfix colelem" id="u761-4" data-muse-uid="U761" data-muse-type="txt_frame">
+                            <!-- content -->
+                            <p>Посмотрите видео:</p>
+                        </div>
+                        <!-- /m_editable -->
+                        <div class="museBGSize clearfix colelem" id="u762">
+                            <!-- group -->
+                            <div class="grpelem" id="u763">
+                                <!-- custom html -->
+
+                                <iframe class="actAsDiv" width="328.30907534246666" height="180.39597602739778" src="https://www.youtube.com/embed/g6TwlxBkvIU" frameborder="0" allowfullscreen></iframe>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- m_editable region-id="editable-static-tag-U743" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u743-4" data-muse-uid="U743" data-muse-type="txt_frame">
+                <!-- content -->
+                <p>Fast Hair Straightener</p>
+            </div>
+            <!-- /m_editable -->
+            <div class="PamphletWidget clearfix widget_invisible grpelem" id="pamphletu765">
+                <!-- none box -->
+                <div class="ThumbGroup clearfix grpelem" id="u794">
+                    <!-- none box -->
+                    <div class="popup_anchor">
+                        <div class="Thumb popup_element clearfix" id="u795">
+                            <!-- group -->
+                            <!-- m_editable region-id="editable-static-tag-U796" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link,clickable" -->
+                            <div class="rounded-corners clearfix grpelem" id="u796-4" data-muse-uid="U796" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u796-2">ЗАКАЗАТЬ ЗА 949грн.</p>
+                            </div>
+                            <!-- /m_editable -->
+                        </div>
+                    </div>
+                </div>
+                <div class="popup_anchor" id="u768popup">
+                    <div class="ContainerGroup rgba-background clearfix" id="u768">
+                        <!-- stack box -->
+                        <div class="Container rounded-corners clearfix grpelem" id="u769">
+                            <!-- column -->
+                            <!-- m_editable region-id="editable-static-tag-U772" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix colelem" id="u772-6" data-muse-uid="U772" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p>ЗАКАЖИ СЕЙЧАС</p>
+                                <p>ПО СУПЕР ЦЕНЕ!</p>
+                            </div>
+                            <!-- /m_editable -->
+                            <div class="clearfix colelem" id="pu790-4">
+                                <!-- group -->
+                                <!-- m_editable region-id="editable-static-tag-U790" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                <div class="clearfix grpelem" id="u790-4" data-muse-uid="U790" data-muse-type="txt_frame">
+                                    <!-- content -->
+                                    <p>2020грн.</p>
+                                </div>
+                                <!-- /m_editable -->
+                                <div class="grpelem" id="u770">
+                                    <!-- simple frame -->
+                                </div>
+                            </div>
+                            <!-- m_editable region-id="editable-static-tag-U771" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix colelem" id="u771-4" data-muse-uid="U771" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p>949грн.</p>
+                            </div>
+                            <!-- /m_editable -->
+                            <form class="form-grp clearfix colelem" id="widgetu773" action="call.php" method="post" onsubmit="if(this.name.value==''){alert('Введите Ваше имя!');return false}if(this.phone.value==''){alert('Введите Ваш номер телефона!');return false}return true;">
+                                <!-- none box -->
+                                <div class="fld-grp clearfix grpelem" id="widgetu784" data-required="true">
+                                    <!-- none box -->
+                                    <!-- m_editable region-id="editable-static-tag-U787" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <span class="fld-input NoWrap actAsDiv shadow rounded-corners clearfix grpelem" id="u787-4" data-muse-uid="U787" data-muse-type="txt_frame"><!-- content --><input class="wrapped-input" type="text" spellcheck="false" id="widgetu784_input" name="name" tabindex="14" placeholder="Ваше имя" /><label class="wrapped-input fld-prompt" id="widgetu784_prompt" for="widgetu784_input"><span class="actAsPara"></span></label>
+                                    </span>
+                                    <!-- /m_editable -->
+                                </div>
+                                <!-- m_editable region-id="editable-static-tag-U774" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+
+                                <!-- /m_editable -->
+                                <input class="submit-btn NoWrap grpelem" id="u779-17" type="submit" value="" tabindex="16" />
+                                <!-- state-based BG images -->
+                                <div class="fld-grp clearfix grpelem" id="widgetu775" data-required="true">
+                                    <!-- none box -->
+                                    <!-- m_editable region-id="editable-static-tag-U778" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <span class="fld-input NoWrap actAsDiv shadow rounded-corners clearfix grpelem" id="u778-4" data-muse-uid="U778" data-muse-type="txt_frame"><!-- content --><input class="wrapped-input" type="text" spellcheck="false" id="widgetu775_input" name="phone" tabindex="15" placeholder="Ваш телефон" /><label class="wrapped-input fld-prompt" id="widgetu775_prompt" for="widgetu775_input"><span class="actAsPara"></span></label>
+                                    </span>
+                                    <!-- /m_editable -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup_anchor">
+                    <div class="PamphletCloseButton PamphletLightboxPart popup_element" id="u793">
+                        <!-- rasterized frame -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- m_editable region-id="editable-static-tag-U797" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+        <div class="clearfix colelem" id="u797-4" data-muse-uid="U797" data-muse-type="txt_frame">
+            <!-- content -->
+            <p>Как мы работаем</p>
+        </div>
+        <!-- /m_editable -->
+        <!-- m_editable region-id="editable-static-tag-U798" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+        <div class="clearfix colelem" id="u798-4" data-muse-uid="U798" data-muse-type="txt_frame">
+            <!-- content -->
+            <p>Fast Hair Straightener</p>
+        </div>
+        <!-- /m_editable -->
+        <div class="rounded-corners colelem" id="u799">
+            <!-- simple frame -->
+        </div>
+        <div class="clearfix colelem" id="pu800-4">
+            <!-- group -->
+            <!-- m_editable region-id="editable-static-tag-U800" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u800-4" data-muse-uid="U800" data-muse-type="txt_frame">
+                <!-- content -->
+                <p id="u800-2">01</p>
+            </div>
+            <!-- /m_editable -->
+            <!-- m_editable region-id="editable-static-tag-U801" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u801-4" data-muse-uid="U801" data-muse-type="txt_frame">
+                <!-- content -->
+                <p id="u801-2">02</p>
+            </div>
+            <!-- /m_editable -->
+        </div>
+        <div class="clearfix colelem" id="pu802">
+            <!-- group -->
+            <div class="museBGSize grpelem" id="u802">
+                <!-- simple frame -->
+            </div>
+            <div class="museBGSize grpelem" id="u803">
+                <!-- simple frame -->
+            </div>
+        </div>
+        <div class="clearfix colelem" id="pu804-6">
+            <!-- group -->
+            <!-- m_editable region-id="editable-static-tag-U804" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u804-6" data-muse-uid="U804" data-muse-type="txt_frame">
+                <!-- content -->
+                <p>Вы оставляете</p>
+                <p>заявку</p>
+            </div>
+            <!-- /m_editable -->
+            <!-- m_editable region-id="editable-static-tag-U805" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u805-6" data-muse-uid="U805" data-muse-type="txt_frame">
+                <!-- content -->
+                <p>Наш менеджер связывается с вами</p>
+                <p>для уточнения деталей</p>
+            </div>
+            <!-- /m_editable -->
+        </div>
+        <div class="clearfix colelem" id="pu806-4">
+            <!-- group -->
+            <!-- m_editable region-id="editable-static-tag-U806" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u806-4" data-muse-uid="U806" data-muse-type="txt_frame">
+                <!-- content -->
+                <p id="u806-2">03</p>
+            </div>
+            <!-- /m_editable -->
+            <!-- m_editable region-id="editable-static-tag-U807" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u807-4" data-muse-uid="U807" data-muse-type="txt_frame">
+                <!-- content -->
+                <p id="u807-2">04</p>
+            </div>
+            <!-- /m_editable -->
+        </div>
+        <div class="clearfix colelem" id="pu808">
+            <!-- group -->
+            <div class="museBGSize grpelem" id="u808">
+                <!-- simple frame -->
+            </div>
+            <div class="museBGSize grpelem" id="u809">
+                <!-- simple frame -->
+            </div>
+        </div>
+        <div class="clearfix colelem" id="pu810-4">
+            <!-- group -->
+            <!-- m_editable region-id="editable-static-tag-U810" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u810-4" data-muse-uid="U810" data-muse-type="txt_frame">
+                <!-- content -->
+                <p>Отправляем вам заказ почтой или курьером</p>
+            </div>
+            <!-- /m_editable -->
+            <!-- m_editable region-id="editable-static-tag-U811" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u811-6" data-muse-uid="U811" data-muse-type="txt_frame">
+                <!-- content -->
+                <p>Вы оплачиваете заказ</p>
+                <p>при получении</p>
+            </div>
+            <!-- /m_editable -->
+        </div>
+        <!-- m_editable region-id="editable-static-tag-U812" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+        <div class="clearfix colelem" id="u812-4" data-muse-uid="U812" data-muse-type="txt_frame">
+            <!-- content -->
+            <p>Отзывы покупателей</p>
+        </div>
+        <!-- /m_editable -->
+        <!-- m_editable region-id="editable-static-tag-U813" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+        <div class="clearfix colelem" id="u813-4" data-muse-uid="U813" data-muse-type="txt_frame">
+            <!-- content -->
+            <p>Fast Hair Straightener</p>
+        </div>
+        <!-- /m_editable -->
+        <div class="rounded-corners colelem" id="u814">
+            <!-- simple frame -->
+        </div>
+        <div class="clearfix colelem" id="pu815">
+            <!-- group -->
+            <div class="rounded-corners grpelem" id="u815">
+                <!-- simple frame -->
+            </div>
+            <!-- m_editable region-id="editable-static-tag-U816" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u816-4" data-muse-uid="U816" data-muse-type="txt_frame">
+                <!-- content -->
+                <p>Анастасия</p>
+            </div>
+            <!-- /m_editable -->
+        </div>
+        <!-- m_editable region-id="editable-static-tag-U817" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+        <div class="clearfix colelem" id="u817-4" data-muse-uid="U817" data-muse-type="txt_frame">
+            <!-- content -->
+            <p id="u817-2">У меня от природы очень вьются волосы и на укладку уходило много времени и терпения. Расческу эту нашла случайно, очень понравилась, за 4 минуты волосы прямые)</p>
+        </div>
+        <!-- /m_editable -->
+        <div class="clearfix colelem" id="pu818">
+            <!-- group -->
+            <div class="rounded-corners grpelem" id="u818">
+                <!-- simple frame -->
+            </div>
+            <!-- m_editable region-id="editable-static-tag-U819" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+            <div class="clearfix grpelem" id="u819-4" data-muse-uid="U819" data-muse-type="txt_frame">
+                <!-- content -->
+                <p>Юлия</p>
+            </div>
+            <!-- /m_editable -->
+        </div>
+        <!-- m_editable region-id="editable-static-tag-U820" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+        <div class="clearfix colelem" id="u820-4" data-muse-uid="U820" data-muse-type="txt_frame">
+            <!-- content -->
+            <p id="u820-2">Этот выпрямитель удивил! Очень хорошо выпрямляет волосы! С доставкой все в порядке и расческа что надо!</p>
+        </div>
+        <!-- /m_editable -->
+        <div class="clearfix colelem" id="pu821">
+            <!-- group -->
+            <div class="browser_width grpelem" id="u821-bw">
+                <div class="museBGSize clearfix" id="u821">
+                    <!-- column -->
+                    <!-- m_editable region-id="editable-static-tag-U822" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                    <div class="clearfix colelem" id="u822-6" data-muse-uid="U822" data-muse-type="txt_frame">
+                        <!-- content -->
+                        <p>ЗАКАЗАТЬ FAST HAIR STRAIGHTENER</p>
+                        <p>В НАШЕМ МАГАЗИНЕ</p>
+                    </div>
+                    <!-- /m_editable -->
+                    <div class="museBGSize colelem" id="u823">
+                        <!-- simple frame -->
+                    </div>
+                    <div class="rgba-background rounded-corners clearfix colelem" id="u824">
+                        <!-- column -->
+                        <!-- m_editable region-id="editable-static-tag-U825" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                        <div class="clearfix colelem" id="u825-6" data-muse-uid="U825" data-muse-type="txt_frame">
+                            <!-- content -->
+                            <p>ЗАКАЖИ СЕЙЧАС</p>
+                            <p>ПО СУПЕР ЦЕНЕ!</p>
+                        </div>
+                        <!-- /m_editable -->
+                        <!-- m_editable region-id="editable-static-tag-U826" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                        <div class="clearfix colelem" id="u826-4" data-muse-uid="U826" data-muse-type="txt_frame">
+                            <!-- content -->
+                            <p>2020грн.</p>
+                        </div>
+                        <!-- /m_editable -->
+                        <!-- m_editable region-id="editable-static-tag-U828" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                        <div class="clearfix colelem" id="u828-4" data-muse-uid="U828" data-muse-type="txt_frame">
+                            <!-- content -->
+                            <p>949грн.</p>
+                        </div>
+                        <!-- /m_editable -->
+                    </div>
+                </div>
+            </div>
+            <div class="grpelem" id="u827">
+                <!-- simple frame -->
+            </div>
+            <form class="form-grp clearfix grpelem" id="widgetu829" action="mailer.php" method="post" onsubmit="if(this.name.value==''){alert('Введите Ваше имя!');return false}if(this.phone.value==''){alert('Введите Ваш номер телефона!');return false}return true;">
+                <!-- none box -->
+                <div class="fld-grp clearfix grpelem" id="widgetu830" data-required="true">
+                    <!-- none box -->
+                    <!-- m_editable region-id="editable-static-tag-U831" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                    <span class="fld-input NoWrap actAsDiv shadow rounded-corners clearfix grpelem" id="u831-4" data-muse-uid="U831" data-muse-type="txt_frame"><!-- content --><input class="wrapped-input" type="text" spellcheck="false" id="widgetu830_input" name="name" tabindex="17" placeholder="Ваше имя" /><label class="wrapped-input fld-prompt" id="widgetu830_prompt" for="widgetu830_input"><span class="actAsPara"></span></label>
+                    </span>
+                    <!-- /m_editable -->
+                </div>
+                <!-- m_editable region-id="editable-static-tag-U838" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+
+                <!-- /m_editable -->
+                <input class="submit-btn NoWrap grpelem" id="u845-17" type="submit" value="" tabindex="19" />
+                <!-- state-based BG images -->
+                <div class="fld-grp clearfix grpelem" id="widgetu840" data-required="true">
+                    <!-- none box -->
+                    <!-- m_editable region-id="editable-static-tag-U841" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                    <span class="fld-input NoWrap actAsDiv shadow rounded-corners clearfix grpelem" id="u841-4" data-muse-uid="U841" data-muse-type="txt_frame"><!-- content --><input class="wrapped-input" type="text" spellcheck="false" id="widgetu840_input" name="phone" tabindex="18" placeholder="Ваш телефон" /><label class="wrapped-input fld-prompt" id="widgetu840_prompt" for="widgetu840_input"><span class="actAsPara"></span></label>
+                    </span>
+                    <!-- /m_editable -->
+                </div>
+            </form>
+        </div>
+        <div class="clearfix colelem" id="pu846">
+            <!-- group -->
+            <div class="browser_width grpelem" id="u846-bw">
+                <div class="clearfix" id="u846">
+                    <!-- group -->
+                    <!-- m_editable region-id="editable-static-tag-U847" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                    <div class="clearfix grpelem" id="u847-6" data-muse-uid="U847" data-muse-type="txt_frame">
+                        <!-- content -->
+                        <p style="font-size:9px; line-height: 12px;"><img src="http://best-gooods.ru/lands-img/cop2-w-320.png" alt="" style="max-width:100%;"></p>
+                    </div>
+                    <!-- /m_editable -->
+                    <div class="grpelem" id="u849">
+                        <!-- rasterized frame -->
+                    </div>
+                    <!-- m_editable region-id="editable-static-tag-U848" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                    <div class="clearfix grpelem" id="u848-4" data-muse-uid="U848" data-muse-type="txt_frame">
+                        <!-- content -->
+                        <p>Перезвонить Вам?</p>
+                    </div>
+                    <!-- /m_editable -->
+                </div>
+            </div>
+            <div class="PamphletWidget clearfix widget_invisible grpelem" id="pamphletu884">
+                <!-- none box -->
+                <div class="ThumbGroup clearfix grpelem" id="u913">
+                    <!-- none box -->
+                    <div class="popup_anchor">
+                        <div class="Thumb popup_element clearfix" id="u914">
+                            <!-- group -->
+                            <!-- m_editable region-id="editable-static-tag-U915" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link,clickable" -->
+                            <div class="clearfix grpelem" id="u915-4" data-muse-uid="U915" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p><span id="u915">Заказать звонок</span></p>
+                            </div>
+                            <!-- /m_editable -->
+                        </div>
+                    </div>
+                </div>
+                <div class="popup_anchor" id="u888popup">
+                    <div class="ContainerGroup rgba-background clearfix" id="u888">
+                        <!-- stack box -->
+                        <div class="Container rounded-corners clearfix grpelem" id="u889">
+                            <!-- column -->
+                            <!-- m_editable region-id="editable-static-tag-U911" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="rounded-corners clearfix colelem" id="u911-4" data-muse-uid="U911" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u911-2">Заказать звонок</p>
+                            </div>
+                            <!-- /m_editable -->
+                            <form class="form-grp clearfix colelem" id="widgetu890" action="mailer.php" method="post" onsubmit="if(this.name.value==''){alert('Введите Ваше имя!');return false}if(this.phone.value==''){alert('Введите Ваш номер телефона!');return false}return true;">
+                                <!-- none box -->
+                                <div class="fld-grp clearfix grpelem" id="widgetu901" data-required="true">
+                                    <!-- none box -->
+                                    <!-- m_editable region-id="editable-static-tag-U903" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <label class="fld-label actAsDiv clearfix grpelem" id="u903-4" data-muse-uid="U903" data-muse-type="txt_frame" for="widgetu901_input"><!-- content --><span class="actAsPara">Ваше имя:</span></label>
+                                    <!-- /m_editable -->
+                                    <!-- m_editable region-id="editable-static-tag-U904" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <span class="fld-input NoWrap actAsDiv shadow rounded-corners clearfix grpelem" id="u904-3" data-muse-uid="U904" data-muse-type="txt_frame"><!-- content --><input class="wrapped-input" type="text" spellcheck="false" id="widgetu901_input" name="name" tabindex="20"/></span>
+                                    <!-- /m_editable -->
+                                </div>
+                                <!-- m_editable region-id="editable-static-tag-U896" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+
+                                <!-- /m_editable -->
+                                <input class="submit-btn NoWrap grpelem" id="u909-13" type="submit" value="" tabindex="23" />
+                                <!-- state-based BG images -->
+                                <div class="fld-grp clearfix grpelem" id="widgetu892" data-required="true">
+                                    <!-- none box -->
+                                    <!-- m_editable region-id="editable-static-tag-U893" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <label class="fld-label actAsDiv clearfix grpelem" id="u893-4" data-muse-uid="U893" data-muse-type="txt_frame" for="widgetu892_input"><!-- content --><span class="actAsPara">Телефон:</span></label>
+                                    <!-- /m_editable -->
+                                    <!-- m_editable region-id="editable-static-tag-U894" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <span class="fld-input NoWrap actAsDiv shadow rounded-corners clearfix grpelem" id="u894-3" data-muse-uid="U894" data-muse-type="txt_frame"><!-- content --><input class="wrapped-input" type="text" spellcheck="false" id="widgetu892_input" name="phone" tabindex="21"/></span>
+                                    <!-- /m_editable -->
+                                </div>
+                                <div class="fld-grp clearfix grpelem" id="widgetu905" data-required="true">
+                                    <!-- none box -->
+                                    <!-- m_editable region-id="editable-static-tag-U906" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <label class="fld-label actAsDiv clearfix grpelem" id="u906-4" data-muse-uid="U906" data-muse-type="txt_frame" for="widgetu905_input"><!-- content --><span class="actAsPara">Дополнительная информация:</span></label>
+                                    <!-- /m_editable -->
+                                    <!-- m_editable region-id="editable-static-tag-U908" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                                    <span class="fld-textarea actAsDiv shadow rounded-corners clearfix grpelem" id="u908-3" data-muse-uid="U908" data-muse-type="txt_frame"><!-- content --><textarea class="wrapped-input" id="widgetu905_input" name="comment" tabindex="22"></textarea></span>
+                                    <!-- /m_editable -->
+                                </div>
+                            </form>
+                            <!-- m_editable region-id="editable-static-tag-U912" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix colelem" id="u912-8" data-muse-uid="U912" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p>Представитель компании свяжется с вами в течении 24 часов.</p>
+                                <p>Вы можете указать в поле «Дополнительная информация»</p>
+                                <p>время суток, когда Вам удобней всего будет позвонить.</p>
+                            </div>
+                            <!-- /m_editable -->
+                        </div>
+                    </div>
+                </div>
+                <div class="popup_anchor">
+                    <div class="PamphletCloseButton PamphletLightboxPart popup_element" id="u887">
+                        <!-- simple frame -->
+                    </div>
+                </div>
+            </div>
+            <div class="PamphletWidget clearfix widget_invisible grpelem" id="pamphletu918">
+                <!-- none box -->
+                <div class="ThumbGroup clearfix grpelem" id="u919">
+                    <!-- none box -->
+                    <div class="popup_anchor">
+                        <div class="Thumb popup_element clearfix" id="u920">
+                            <!-- group -->
+                            <!-- m_editable region-id="editable-static-tag-U921" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link,clickable" -->
+                            <div class="clearfix grpelem" id="u921-4" data-muse-uid="U921" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p>Политика конфиденциальности</p>
+                            </div>
+                            <!-- /m_editable -->
+                        </div>
+                    </div>
+                </div>
+                <div class="popup_anchor" id="u922popup">
+                    <div class="ContainerGroup rgba-background clearfix" id="u922">
+                        <!-- stack box -->
+                        <div class="Container clearfix grpelem" id="u923">
+                            <!-- group -->
+                            <!-- m_editable region-id="editable-static-tag-U924" template="phone/index.html" data-type="html" data-ice-options="disableImageResize,link" -->
+                            <div class="clearfix grpelem" id="u924-7" data-muse-uid="U924" data-muse-type="txt_frame">
+                                <!-- content -->
+                                <p id="u924-2">ПОЛИТИКА КОНФЕДЕНЦИАЛЬНОСТИ</p>
+                                <p>&nbsp;</p>
+                                <p>Наш интернет-магазин уважительно относится к правам клиента. Соблюдается строгая конфиденциальность при оформлении заказа. Сведения надёжно сохраняются и защищены от передачи. Согласием на обработку данных клиента исключительно
+                                    с целью оказания услуг является размещение заказа на сайте. К персональным данным относится личная информация о клиенте: домашний адрес; имя, фамилия, отчество; сведения о рождении; имущественное, семейное положение;
+                                    личные контакты (телефон, электронная почта) и прочие сведения, которые перечислены в Законе РФ № 152-ФЗ «О персональных данных» от 27 июля 2006 г. Клиент вправе отказаться от обработки персональных данных. Нами в данном
+                                    случае гарантируется удаление с сайта всех персональных данных в трёхдневный срок в рабочее время. Подобный отказ клиент может оформить простым электронным письмом на адрес, указанный на странице нашего сайта.</p>
+                            </div>
+                            <!-- /m_editable -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="verticalspacer"></div>
+    </div>
+    <div class="preload_images">
+        <img class="preload" src="./images/vobrzvbut-u882-13-r.png" alt="" />
+        <img class="preload" src="./images/vobrzvbut-u882-13-m.png" alt="" />
+        <img class="preload" src="./images/vobrzvbut-u882-13-fs.png" alt="" />
+        <img class="preload" src="./images/u631-17-r.png" alt="" />
+        <img class="preload" src="./images/u631-17-m.png" alt="" />
+        <img class="preload" src="./images/u631-17-fs.png" alt="" />
+        <img class="preload" src="./images/u674-17-r.png" alt="" />
+        <img class="preload" src="./images/u674-17-m.png" alt="" />
+        <img class="preload" src="./images/u674-17-fs.png" alt="" />
+        <img class="preload" src="./images/u719-17-r.png" alt="" />
+        <img class="preload" src="./images/u719-17-m.png" alt="" />
+        <img class="preload" src="./images/u719-17-fs.png" alt="" />
+        <img class="preload" src="./images/u779-17-r.png" alt="" />
+        <img class="preload" src="./images/u779-17-m.png" alt="" />
+        <img class="preload" src="./images/u779-17-fs.png" alt="" />
+        <img class="preload" src="./images/u845-17-r.png" alt="" />
+        <img class="preload" src="./images/u845-17-m.png" alt="" />
+        <img class="preload" src="./images/u845-17-fs.png" alt="" />
+        <img class="preload" src="./images/vobrzvbut-u909-13-r.png" alt="" />
+        <img class="preload" src="./images/vobrzvbut-u909-13-m.png" alt="" />
+        <img class="preload" src="./images/vobrzvbut-u909-13-fs.png" alt="" />
+    </div>
+    <!-- JS includes -->
+    <script type="text/javascript">
+        if (document.location.protocol != 'https:') document.write('\x3Cscript src="http://musecdn2.businesscatalyst.com/scripts/4.0/jquery-1.8.3.min.js" type="text/javascript">\x3C/script>');
+    </script>
+    <script type="text/javascript">
+        window.jQuery || document.write('\x3Cscript src="./scripts/jquery-1.8.3.min.js" type="text/javascript">\x3C/script>');
+    </script>
+    <script src="./scripts/museutils.js" type="text/javascript"></script>
+    <script src="./scripts/jquery.musepolyfill.bgsize.js" type="text/javascript"></script>
+    <script src="./scripts/jquery.watch.js" type="text/javascript"></script>
+    <script src="./scripts/webpro.js" type="text/javascript"></script>
+    <script src="./scripts/musewpslideshow.js" type="text/javascript"></script>
+    <script src="./scripts/jquery.museoverlay.js" type="text/javascript"></script>
+    <script src="./scripts/touchswipe.js" type="text/javascript"></script>
+    <!-- Other scripts -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            try {
+                (function() {
+                    var a = {},
+                        b = function(a) {
+                            if (a.match(/^rgb/)) return a = a.replace(/\s+/g, "").match(/([\d\,]+)/gi)[0].split(","), (parseInt(a[0]) << 16) + (parseInt(a[1]) << 8) + parseInt(a[2]);
+                            if (a.match(/^\#/)) return parseInt(a.substr(1), 16);
+                            return 0
+                        };
+                    (function() {
+                        $('link[type="text/css"]').each(function() {
+                            var b = ($(this).attr("href") || "").match(/\/?css\/([\w\-]+\.css)\?(\d+)/);
+                            b && b[1] && b[2] && (a[b[1]] = b[2])
+                        })
+                    })();
+                    (function() {
+                        $("body").append('<div class="version" style="display:none; width:1px; height:1px;"></div>');
+                        for (var c = $(".version"), d = 0; d < Muse.assets.required.length;) {
+                            var f = Muse.assets.required[d],
+                                g = f.match(/([\w\-\.]+)\.(\w+)$/),
+                                k = g && g[1] ? g[1] : null,
+                                g = g && g[2] ? g[2] : null;
+                            switch (g.toLowerCase()) {
+                                case "css":
+                                    k = k.replace(/\W/gi, "_").replace(/^([^a-z])/gi, "_$1");
+                                    c.addClass(k);
+                                    var g = b(c.css("color")),
+                                        h = b(c.css("background-color"));
+                                    g != 0 || h != 0 ? (Muse.assets.required.splice(d, 1), "undefined" != typeof a[f] && (g != a[f] >>> 24 || h != (a[f] & 16777215)) && Muse.assets.outOfDate.push(f)) : d++;
+                                    c.removeClass(k);
+                                    break;
+                                case "js":
+                                    k.match(/^jquery-[\d\.]+/gi) &&
+                                        typeof $ != "undefined" ? Muse.assets.required.splice(d, 1) : d++;
+                                    break;
+                                default:
+                                    throw Error("Unsupported file type: " + g);
+                            }
+                        }
+                        c.remove();
+
+                    })()
+                })();
+                /* body */
+                Muse.Utils.transformMarkupToFixBrowserProblemsPreInit(); /* body */
+                Muse.Utils.prepHyperlinks(true); /* body */
+                Muse.Utils.resizeHeight() /* resize height */
+
+                Muse.Utils.initWidget('#pamphletu850', function(elem) {
+                    new WebPro.Widget.ContentSlideShow(elem, {
+                        contentLayout_runtime: 'lightbox',
+                        event: 'click',
+                        deactivationEvent: 'none',
+                        autoPlay: false,
+                        displayInterval: 3000,
+                        transitionStyle: 'fading',
+                        transitionDuration: 500,
+                        hideAllContentsFirst: false,
+                        shuffle: false,
+                        enableSwipe: true,
+                        resumeAutoplay: true,
+                        resumeAutoplayInterval: 3000,
+                        playOnce: false,
+                        autoActivate_runtime: false
+                    });
+                }); /* #pamphletu850 */
+
+                Muse.Utils.initWidget('#pamphletu617', function(elem) {
+                    new WebPro.Widget.ContentSlideShow(elem, {
+                        contentLayout_runtime: 'lightbox',
+                        event: 'click',
+                        deactivationEvent: 'none',
+                        autoPlay: false,
+                        displayInterval: 3000,
+                        transitionStyle: 'fading',
+                        transitionDuration: 500,
+                        hideAllContentsFirst: false,
+                        shuffle: false,
+                        enableSwipe: true,
+                        resumeAutoplay: true,
+                        resumeAutoplayInterval: 3000,
+                        playOnce: false,
+                        autoActivate_runtime: false
+                    });
+                }); /* #pamphletu617 */
+
+                Muse.Utils.initWidget('#pamphletu655', function(elem) {
+                    new WebPro.Widget.ContentSlideShow(elem, {
+                        contentLayout_runtime: 'lightbox',
+                        event: 'click',
+                        deactivationEvent: 'none',
+                        autoPlay: false,
+                        displayInterval: 3000,
+                        transitionStyle: 'fading',
+                        transitionDuration: 500,
+                        hideAllContentsFirst: false,
+                        shuffle: false,
+                        enableSwipe: true,
+                        resumeAutoplay: true,
+                        resumeAutoplayInterval: 3000,
+                        playOnce: false,
+                        autoActivate_runtime: false
+                    });
+                }); /* #pamphletu655 */
+
+                Muse.Utils.initWidget('#pamphletu708', function(elem) {
+                    new WebPro.Widget.ContentSlideShow(elem, {
+                        contentLayout_runtime: 'lightbox',
+                        event: 'click',
+                        deactivationEvent: 'none',
+                        autoPlay: false,
+                        displayInterval: 3000,
+                        transitionStyle: 'fading',
+                        transitionDuration: 500,
+                        hideAllContentsFirst: false,
+                        shuffle: false,
+                        enableSwipe: true,
+                        resumeAutoplay: true,
+                        resumeAutoplayInterval: 3000,
+                        playOnce: false,
+                        autoActivate_runtime: false
+                    });
+                }); /* #pamphletu708 */
+
+                Muse.Utils.initWidget('#pamphletu765', function(elem) {
+                    new WebPro.Widget.ContentSlideShow(elem, {
+                        contentLayout_runtime: 'lightbox',
+                        event: 'click',
+                        deactivationEvent: 'none',
+                        autoPlay: false,
+                        displayInterval: 3000,
+                        transitionStyle: 'fading',
+                        transitionDuration: 500,
+                        hideAllContentsFirst: false,
+                        shuffle: false,
+                        enableSwipe: true,
+                        resumeAutoplay: true,
+                        resumeAutoplayInterval: 3000,
+                        playOnce: false,
+                        autoActivate_runtime: false
+                    });
+                }); /* #pamphletu765 */
+
+
+                Muse.Utils.initWidget('#pamphletu884', function(elem) {
+                    new WebPro.Widget.ContentSlideShow(elem, {
+                        contentLayout_runtime: 'lightbox',
+                        event: 'click',
+                        deactivationEvent: 'none',
+                        autoPlay: false,
+                        displayInterval: 3000,
+                        transitionStyle: 'fading',
+                        transitionDuration: 500,
+                        hideAllContentsFirst: false,
+                        shuffle: false,
+                        enableSwipe: true,
+                        resumeAutoplay: true,
+                        resumeAutoplayInterval: 3000,
+                        playOnce: false,
+                        autoActivate_runtime: false
+                    });
+                }); /* #pamphletu884 */
+                Muse.Utils.initWidget('#pamphletu918', function(elem) {
+                    new WebPro.Widget.ContentSlideShow(elem, {
+                        contentLayout_runtime: 'lightbox',
+                        event: 'click',
+                        deactivationEvent: 'none',
+                        autoPlay: false,
+                        displayInterval: 3000,
+                        transitionStyle: 'fading',
+                        transitionDuration: 500,
+                        hideAllContentsFirst: false,
+                        shuffle: false,
+                        enableSwipe: true,
+                        resumeAutoplay: true,
+                        resumeAutoplayInterval: 3000,
+                        playOnce: false,
+                        autoActivate_runtime: false
+                    });
+                }); /* #pamphletu918 */
+                Muse.Utils.fullPage('#page'); /* 100% height page */
+                Muse.Utils.showWidgetsWhenReady(); /* body */
+                Muse.Utils.transformMarkupToFixBrowserProblems(); /* body */
+            } catch (e) {
+                if (e && 'function' == typeof e.notify) e.notify();
+                else Muse.Assert.fail('Error calling selector function:' + e);
+            }
+        });
+    </script>
+</body>
+
+</html>
